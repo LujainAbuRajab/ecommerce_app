@@ -85,7 +85,7 @@ class _ProductItemState extends State<ProductItem> {
               ),
         ),
         Text(
-          widget.productItem.category,
+          widget.productItem.category.title,
           style: Theme.of(context).textTheme.labelMedium!.copyWith(
                 color: Colors.grey,
               ),

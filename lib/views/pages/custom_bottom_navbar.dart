@@ -73,14 +73,14 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
           padding: EdgeInsets.all(4.0),
           child: CircleAvatar(
             radius: 30,
-            backgroundImage: NetworkImage(AppAssets.userImage),
+            backgroundImage: AssetImage(AppAssets.userImage),
           ),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hi, Tarek',
+              'Hi, Lujain',
               style: Theme.of(context).textTheme.labelLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),

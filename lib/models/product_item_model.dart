@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/models/category.dart';
+import 'package:ecommerce_app/utils/app_assets.dart';
+
 enum ProductSize {
   S,
   M,
@@ -11,7 +14,7 @@ class ProductItemModel {
   final String imgUrl;
   final String description;
   final double price;
-  final String category;
+  final Category category;
   final ProductSize? size;
   final double averageRate;
 
@@ -33,7 +36,7 @@ class ProductItemModel {
     String? imgUrl,
     String? description,
     double? price,
-    String? category,
+    Category? category,
     double? averageRate,
     int? quantity,
     ProductSize? size,
@@ -56,85 +59,57 @@ List<ProductItemModel> favProducts = [];
 List<ProductItemModel> dummyProducts = [
   ProductItemModel(
     id: '1',
-    name: 'T-shirt',
+    name: 'Black wristwatch',
     imgUrl:
-        'https://parspng.com/wp-content/uploads/2022/07/Tshirtpng.parspng.com_.png',
+        AppAssets.w1,
     price: 10,
-    category: 'Clothes',
+    category: dummyCategories[0],
   ),
   ProductItemModel(
     id: '2',
-    name: 'Black Shoes',
-    imgUrl: 'https://pngimg.com/d/men_shoes_PNG7475.png',
+    name: 'Grey wristwatch',
+    imgUrl: AppAssets.w2,
     price: 20,
-    category: 'Shoes',
+    category: dummyCategories[0],
   ),
   ProductItemModel(
     id: '3',
-    name: 'Trousers',
+    name: 'white wristwatch',
     imgUrl:
-        'https://www.pngall.com/wp-content/uploads/2016/09/Trouser-Free-Download-PNG.png',
+       AppAssets.w3,
     price: 30,
-    category: 'Clothes',
+    category: dummyCategories[0],
   ),
   ProductItemModel(
-    id: '4',
-    name: 'Pack of Tomatoes',
+    id: '3',
+    name: 'white wristwatch',
     imgUrl:
-        'https://parspng.com/wp-content/uploads/2022/12/tomatopng.parspng.com-6.png',
-    price: 10,
-    category: 'Groceries',
+       AppAssets.w4,
+    price: 30,
+    category: dummyCategories[0],
   ),
   ProductItemModel(
-    id: '5',
-    name: 'Pack of Potatoes',
-    imgUrl: 'https://pngimg.com/d/potato_png2398.png',
-    price: 10,
-    category: 'Groceries',
-  ),
-  ProductItemModel(
-    id: '6',
-    name: 'Pack of Onions',
-    imgUrl: 'https://pngimg.com/d/onion_PNG99213.png',
-    price: 10,
-    category: 'Groceries',
-  ),
-  ProductItemModel(
-    id: '7',
-    name: 'Pack of Apples',
-    imgUrl: 'https://pngfre.com/wp-content/uploads/apple-43-1024x1015.png',
-    price: 10,
-    category: 'Fruits',
-  ),
-  ProductItemModel(
-    id: '8',
-    name: 'Pack of Oranges',
+    id: '3',
+    name: 'white wristwatch',
     imgUrl:
-        'https://parspng.com/wp-content/uploads/2022/05/orangepng.parspng.com_-1.png',
-    price: 10,
-    category: 'Fruits',
+       AppAssets.w5,
+    price: 30,
+    category: dummyCategories[0],
   ),
   ProductItemModel(
-    id: '9',
-    name: 'Pack of Bananas',
+    id: '3',
+    name: 'white wristwatch',
     imgUrl:
-        'https://static.vecteezy.com/system/resources/previews/015/100/096/original/bananas-transparent-background-free-png.png',
-    price: 10,
-    category: 'Fruits',
+       AppAssets.w6,
+    price: 30,
+    category: dummyCategories[0],
   ),
-  ProductItemModel(
-    id: '10',
-    name: 'Pack of Mangoes',
-    imgUrl: 'https://purepng.com/public/uploads/large/mango-tgy.png',
-    price: 10,
-    category: 'Fruits',
-  ),
-  ProductItemModel(
-    id: '11',
-    name: 'Sweet Shirt',
+  ProductItemModel( 
+    id: '3',
+    name: 'white wristwatch',
     imgUrl:
-        'https://www.usherbrand.com/cdn/shop/products/5uYjJeWpde9urtZyWKwFK4GHS6S3thwKRuYaMRph7bBDyqSZwZ_87x1mq24b2e7_1800x1800.png',
-    price: 15,
-    category: 'Clothes',
+       AppAssets.w7,
+    price: 30,
+    category: dummyCategories[0],
   ),
 ];
