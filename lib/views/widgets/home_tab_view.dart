@@ -32,6 +32,7 @@ class HomeTabView extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 8,),
             GridView.builder(
               itemCount: dummyProducts.length,
               shrinkWrap: true,

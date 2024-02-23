@@ -4,6 +4,7 @@ import 'package:ecommerce_app/views/pages/cart_page.dart';
 import 'package:ecommerce_app/views/pages/favorites_page.dart';
 import 'package:ecommerce_app/views/pages/home_page.dart';
 import 'package:ecommerce_app/views/pages/profle_page.dart';
+import 'package:ecommerce_app/views/pages/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
@@ -70,7 +71,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
     return Scaffold(
       appBar: AppBar(
         leading: const Padding(
-          padding: EdgeInsets.all(4.0),
+          padding: EdgeInsets.all(8.0),
           child: CircleAvatar(
             radius: 30,
             backgroundImage: AssetImage(AppAssets.userImage),
@@ -95,7 +96,9 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              SearchPage();
+            },
             icon: const Icon(Icons.search),
           ),
           IconButton(
