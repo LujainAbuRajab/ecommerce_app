@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/models/product_item_model.dart';
-import 'package:ecommerce_app/views/pages/product_details_page.dart';
+import 'package:ecommerce_app/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -13,6 +13,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
+    print("fav products: ${favProducts}");
     debugPrint('FavoritesPage build()');
     print("-------${favProducts}");
     if (favProducts.isEmpty) {
@@ -30,12 +31,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
               child: ListTile(
                 onTap: () {
                   Navigator.of(context)
-                      .push(
-                        MaterialPageRoute(
-                          builder: (context) => ProductDetailsPage(
-                            product: favProducts[index],
-                          ),
-                        ),
+                      .pushNamed(
+                        AppRoutes.productDetails,
+                        arguments: favProducts[index],
                       )
                       .then((value) => setState(() {}));
                 },
