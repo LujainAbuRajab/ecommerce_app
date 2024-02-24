@@ -16,66 +16,68 @@ class _ProductItemState extends State<ProductItem> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Stack(
-          children: [
-            Container(
-              height: 130,
-              width: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.0),
-                color: AppColors.grey2,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  widget.productItem.imgUrl,
-                  fit: BoxFit.contain,
-                  // placeholder: (context, url) => const Center(
-                  //   child: CircularProgressIndicator.adaptive(),
-                  // ),
-                  // errorWidget: (context, url, error) => const Icon(
-                  //   Icons.error,
-                  //   color: Colors.red,
-                  // ),
-                ),
-              ),
-            ),
-            Positioned(
-              top: 8.0,
-              right: 8.0,
-              child: DecoratedBox(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white54,
-                ),
-                child: InkWell(
-              onTap: () {
-                setState(() {
-                  if (favProducts.contains(widget.productItem)) {
-                    favProducts.remove(widget.productItem);
-                  } else {
-                    favProducts.add(widget.productItem);
-                  }
-                });
-              },
-              child: DecoratedBox(
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.white,
+        Expanded(
+          child: Stack(
+            children: [
+              Container(
+                height: 130,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16.0),
+                  color: AppColors.grey2,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Icon(
-                    favProducts.contains(widget.productItem)
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                    color: Theme.of(context).primaryColor,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    widget.productItem.imgUrl,
+                    fit: BoxFit.contain,
+                    // placeholder: (context, url) => const Center(
+                    //   child: CircularProgressIndicator.adaptive(),
+                    // ),
+                    // errorWidget: (context, url, error) => const Icon(
+                    //   Icons.error,
+                    //   color: Colors.red,
+                    // ),
                   ),
                 ),
-              ),),
-            ),
-            ),
-          ],
+              ),
+              Positioned(
+                top: 8.0,
+                right: 8.0,
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white54,
+                  ),
+                  child: InkWell(
+                onTap: () {
+                  setState(() {
+                    if (favProducts.contains(widget.productItem)) {
+                      favProducts.remove(widget.productItem);
+                    } else {
+                      favProducts.add(widget.productItem);
+                    }
+                  });
+                },
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Icon(
+                      favProducts.contains(widget.productItem)
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
+                ),),
+              ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 4.0),
         Text(
