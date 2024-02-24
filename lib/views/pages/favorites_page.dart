@@ -14,7 +14,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
     debugPrint('FavoritesPage build()');
-
+    print("-------${favProducts}");
     if (favProducts.isEmpty) {
       return const Center(
         child: Text('No Favorite Products!'),

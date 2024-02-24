@@ -26,8 +26,8 @@ class _CustomCarouselIndicatorState extends State<CustomCarouselIndicator> {
             margin: const EdgeInsets.all(5.0),
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: CachedNetworkImage(
-                imageUrl: item.imgUrl,
+              child: Image.asset(
+                item.imgUrl,
                 fit: BoxFit.cover,
                 width: 1000.0,
               ),

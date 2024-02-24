@@ -27,16 +27,16 @@ class _ProductItemState extends State<ProductItem> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CachedNetworkImage(
-                  imageUrl: widget.productItem.imgUrl,
+                child: Image.asset(
+                  widget.productItem.imgUrl,
                   fit: BoxFit.contain,
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
-                  errorWidget: (context, url, error) => const Icon(
-                    Icons.error,
-                    color: Colors.red,
-                  ),
+                  // placeholder: (context, url) => const Center(
+                  //   child: CircularProgressIndicator.adaptive(),
+                  // ),
+                  // errorWidget: (context, url, error) => const Icon(
+                  //   Icons.error,
+                  //   color: Colors.red,
+                  // ),
                 ),
               ),
             ),

@@ -22,55 +22,55 @@ class _CategoriesTabViewState extends State<CategoriesTabView> {
 
   @override
   Widget build(BuildContext context) {
-     return ListView.builder(
+    return ListView.builder(
         itemCount: dummyCategories.length,
         itemBuilder: (context, index) {
           final dummyCategory = dummyCategories[index];
           return InkWell(
-                      onTap: () {
-                        setState(() {
-                          if (selectedCategoryId != null &&
-                              selectedCategoryId == dummyCategory.id) {
-                            selectedCategoryId = null;
-                            filteredProducts = dummyProducts;
-                          } else {
-                            selectedCategoryId = dummyCategory.id;
-                            filteredProducts = dummyProducts
-                                .where((product) =>
-                                    product.category.id == selectedCategoryId)
-                                .toList();
-                          }
-                        });
-                      },
-                      child: Card(
+            onTap: () {
+              setState(() {
+                if (selectedCategoryId != null &&
+                    selectedCategoryId == dummyCategory.id) {
+                  selectedCategoryId = null;
+                  filteredProducts = dummyProducts;
+                } else {
+                  selectedCategoryId = dummyCategory.id;
+                  filteredProducts = dummyProducts
+                      .where((product) =>
+                          product.category.id == selectedCategoryId)
+                      .toList();
+                }
+              });
+            },
+            child: Card(
+              color: selectedCategoryId == dummyCategory.id
+                  ? AppColors.primary
+                  : null,
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      dummyCategory.imgUrl,
+                      width: 50,
+                    ),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    Text(
+                      dummyCategory.title,
+                      style: TextStyle(
                         color: selectedCategoryId == dummyCategory.id
-                            ? AppColors.primary
-                            : null,
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                dummyCategory.imgUrl,
-                                width: 50,
-                              ),
-                              const SizedBox(
-                                height: 6,
-                              ),
-                              Text(
-                                dummyCategory.title,
-                                style: TextStyle(
-                                  color: selectedCategoryId == dummyCategory.id
-                                      ? Theme.of(context).canvasColor
-                                      : AppColors.primary,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                            ? Theme.of(context).canvasColor
+                            : AppColors.primary,
                       ),
-                    );
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
           // return Card(
           //   child: Padding(
           //     padding: const EdgeInsets.all(16.0),
@@ -123,8 +123,5 @@ class _CategoriesTabViewState extends State<CategoriesTabView> {
           //   ),
           // );
         });
-  
-
-
   }
 }
