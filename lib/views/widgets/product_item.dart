@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+//import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/models/product_item_model.dart';
 import 'package:ecommerce_app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +50,8 @@ class _ProductItemState extends State<ProductItem> {
                 ),
                 child: InkWell(
               onTap: () {
+                print("==========$favProducts");
+                print("isContain: ${favProducts.contains(widget.productItem)}");
                 setState(() {
                   if (favProducts.contains(widget.productItem)) {
                     favProducts.remove(widget.productItem);
@@ -57,6 +59,7 @@ class _ProductItemState extends State<ProductItem> {
                     favProducts.add(widget.productItem);
                   }
                 });
+                print("after: ${favProducts}");
               },
               child: DecoratedBox(
                 decoration: const BoxDecoration(

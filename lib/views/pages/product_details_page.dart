@@ -1,11 +1,12 @@
 import 'package:ecommerce_app/models/product_item_model.dart';
 import 'package:ecommerce_app/utils/app_colors.dart';
-import 'package:ecommerce_app/views/widgets/counter_widget.dart';
+import 'package:ecommerce_app/views/widgets/product_space_item.dart';
 import 'package:flutter/material.dart';
 
+
 class ProductDetailsPage extends StatefulWidget {
-  final ProductItemModel product;
-  const ProductDetailsPage({super.key, required this.product});
+  // final Product product;
+  const ProductDetailsPage({super.key});
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -14,26 +15,27 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
+    final product = ModalRoute.of(context)!.settings.arguments as ProductItemModel;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.primary.withOpacity(0.2),
+        backgroundColor: AppColors.grey2,
         actions: [
           IconButton(
             onPressed: () {
               setState(() {
-                        if (favProducts.contains(widget.product)) {
-                          favProducts.remove(widget.product);
-                        } else {
-                          favProducts.add(widget.product);
-                        }
-                      });
+                if (favProducts.contains(product)) {
+                  favProducts.remove(product);
+                } else {
+                  favProducts.add(product);
+                }
+              });
             },
             icon: Icon(
-              favProducts.contains(widget.product)
+              favProducts.contains(product)
                   ? Icons.favorite
                   : Icons.favorite_border,
             ),
-            color: Theme.of(context).primaryColor,
           ),
         ],
       ),
@@ -41,36 +43,25 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(100),
-                  bottomRight: Radius.circular(100)),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.2),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.grey2,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(
+                  50,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 30,
-                    top: 10,
-                    right: 50,
-                    left: 50,
-                  ),
-                  child: Image.asset(
-                    widget.product.imgUrl,
-                    fit: BoxFit.cover,
-                  ),
+                child: Image.network(
+                  product.imgUrl,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -79,48 +70,53 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.product.name,
+                            product.name,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
                                 .copyWith(
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.primary,
                                 ),
                           ),
+                          const SizedBox(height: 6),
                           Text(
-                            widget.product.name,
+                            product.category.title,
                             style: Theme.of(context)
                                 .textTheme
-                                .labelLarge!
+                                .titleMedium!
                                 .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.primary,
+                                  color: AppColors.grey,
                                 ),
                           ),
                         ],
                       ),
-                      CounterWidget(),
                     ],
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 24),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // ProductSpecsItem(title: 'Size', value: 'Large'),
-                      // SizedBox(height: 30, child: VerticalDivider()),
-                      // ProductSpecsItem(title: 'Calories', value: '120 Cal'),
-                      // SizedBox(height: 30, child: VerticalDivider()),
-                      // ProductSpecsItem(title: 'Cooking', value: '10 mins'),
+                      ProductSpecsItem(title: 'Size', value: 'Large'),
+                      SizedBox(height: 30, child: VerticalDivider()),
+                      ProductSpecsItem(title: 'Calories', value: '120 Cal'),
+                      SizedBox(height: 30, child: VerticalDivider()),
+                      ProductSpecsItem(title: 'Cooking', value: '10 mins'),
                     ],
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 16),
+                  Text(
+                    product.description,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: AppColors.grey,
+                        ),
+                  ),
+                  const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         child: Text(
-                          '\$${widget.product.price}',
+                          '\$${product.price}',
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontWeight: FontWeight.bold,
@@ -141,13 +137,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                             ),
-                            child: const Text(
-                              'Add to cart',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                            child: const Text('Add to cart'),
                           ),
                         ),
                       ),
