@@ -28,7 +28,7 @@ class _CustomCarouselIndicatorState extends State<CustomCarouselIndicator> {
               child: Image.asset(
                 item.imgUrl,
                 fit: BoxFit.cover, 
-                width: 100,
+                width: 500,
               ),
             ),
           ))

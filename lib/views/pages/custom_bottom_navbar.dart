@@ -95,12 +95,29 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
           ],
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              SearchPage();
-            },
-            icon: const Icon(Icons.search),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     setState(() {
+          //       SearchPage();
+          //     });
+          //   },
+          //   icon: const Icon(Icons.search),
+          // ),
+          // ElevatedButton(
+          // onPressed: () {
+          //   // Navigate to the second page
+          //   Navigator.push(
+          //     context,
+          //     MaterialPageRoute(builder: (context) => SecondPage()),
+          //   );})
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchPage()),
+                );
+              },
+              child: Icon(Icons.search)),
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.notifications_none),
