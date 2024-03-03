@@ -2,6 +2,8 @@ import 'package:ecommerce_app/models/product_item_model.dart';
 import 'package:ecommerce_app/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/counter_widget.dart';
+
 class ProductDetailsPage extends StatefulWidget {
   // final Product product;
   final ProductItemModel product;
@@ -53,86 +55,94 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 color: AppColors.white,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(50)),
               ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            product.name,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge!
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 0, 0),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              product.name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.star,
+                                  color: AppColors.orange,
                                 ),
-                          ),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.star,
-                                color: AppColors.orange,
-                              ),
-                              const SizedBox(width: 6),
-                              Text(
-                                product.averageRate.toString(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelLarge!
-                                    .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Size',
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                          fontWeight: FontWeight.bold,
+                                const SizedBox(width: 6),
+                                Text(
+                                  product.averageRate.toString(),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge!
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: ProductSize.values
-                        .map(
-                          (size) => Padding(
-                            padding: const EdgeInsetsDirectional.only(end: 8),
-                            child: InkWell(
-                              onTap: () {},
-                              child: CircleAvatar(
-                                radius: 23,
-                                backgroundColor: selectedSize == size
-                                    ? Theme.of(context).primaryColor
-                                    : AppColors.grey2,
-                                child: Center(
-                                  child: Text(
-                                    size.name,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelMedium!
-                                        .copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          color: selectedSize == size
-                                              ? AppColors.white
-                                              : null,
-                                        ),
+                        CounterWidget(),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Size',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: ProductSize.values
+                          .map(
+                            (size) => Padding(
+                              padding: const EdgeInsetsDirectional.only(end: 8),
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    selectedSize = size;
+                                  });
+                                },
+                                child: CircleAvatar(
+                                  radius: 23,
+                                  backgroundColor: selectedSize == size
+                                      ? Theme.of(context).primaryColor
+                                      : AppColors.grey2,
+                                  child: Center(
+                                    child: Text(
+                                      size.name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium!
+                                          .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: selectedSize == size
+                                                ? AppColors.white
+                                                : null,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ],
+                          )
+                          .toList(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
