@@ -53,7 +53,7 @@ class _CategoriesTabViewState extends State<CategoriesTabView> {
                   children: [
                     Image.asset(
                       dummyCategory.imgUrl,
-                      width: 50,
+                      fit: BoxFit.cover,
                     ),
                     const SizedBox(
                       height: 6,
