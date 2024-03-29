@@ -1,5 +1,6 @@
+import 'package:ecommerce_app/utils/Routes/app_router.dart';
+import 'package:ecommerce_app/utils/Routes/app_routes.dart';
 import 'package:ecommerce_app/utils/app_theme.dart';
-import 'package:ecommerce_app/views/pages/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'E-Commerce App',
       theme: AppTheme.lightTheme(),
-      home: const CustomBottomNavbar(),
+      initialRoute: AppRoutes.bottomNavbar,
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }

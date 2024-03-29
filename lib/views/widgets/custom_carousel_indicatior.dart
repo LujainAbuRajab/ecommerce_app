@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app/models/announcement_model.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +25,10 @@ class _CustomCarouselIndicatorState extends State<CustomCarouselIndicator> {
             margin: const EdgeInsets.all(5.0),
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: CachedNetworkImage(
-                imageUrl: item.imgUrl,
-                fit: BoxFit.cover,
-                width: 1000.0,
+              child: Image.asset(
+                item.imgUrl,
+                fit: BoxFit.cover, 
+                width: 500,
               ),
             ),
           ))

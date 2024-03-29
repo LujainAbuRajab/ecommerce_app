@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/utils/app_assets.dart';
+// import 'package:ecommerce_app/utils/app_assets.dart';
 import 'package:ecommerce_app/utils/app_colors.dart';
 import 'package:ecommerce_app/views/pages/cart_page.dart';
 import 'package:ecommerce_app/views/pages/favorites_page.dart';
@@ -74,7 +74,7 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
           padding: EdgeInsets.all(8.0),
           child: CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage(AppAssets.userImage),
+            backgroundImage: AssetImage("/lujj.png"),
           ),
         ),
         title: Column(
@@ -95,12 +95,29 @@ class _CustomBottomNavbarState extends State<CustomBottomNavbar> {
           ],
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              SearchPage();
-            },
-            icon: const Icon(Icons.search),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     setState(() {
+          //       SearchPage();
+          //     });
+          //   },
+          //   icon: const Icon(Icons.search),
+          // ),
+          // ElevatedButton(
+          // onPressed: () {
+          //   // Navigate to the second page
+          //   Navigator.push(
+          //     context,
+          //     MaterialPageRoute(builder: (context) => SecondPage()),
+          //   );})
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchPage()),
+                );
+              },
+              child: Icon(Icons.search)),
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.notifications_none),

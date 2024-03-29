@@ -17,13 +17,13 @@ List<Category> dummyCategories = [
   Category(
     id: "1",
     title: "women's hand watch",
-    imgUrl:'assets/images/WHW.png',
+    imgUrl:'assets/images/WHW.jpg',
     onTap: () {},
   ),
   Category(
     id: "2",
     title: "men's hand watch",
-    imgUrl:'assets/images/MHW.png',
+    imgUrl:'assets/images/MHW.jpg',
     onTap: () {},
   ),
   Category(
